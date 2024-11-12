@@ -4,9 +4,10 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "dev:litesync": "nodemon server-litesync.js",
     "start": "node server.js",
-    "start:litesync": "node server-litesync.js",
+    "start:node1": "node server-litesync-node1.js",
+    "start:node2": "node server-litesync-node2.js",
+    "start:node3": "node server-litesync-node3.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
