@@ -5,7 +5,24 @@ const app = express();
 const port = 8001;
 
 // 创建 SQLite 数据库连接 / create SQLite db connection
-const db = new Database('./data/litesync-node1.db', { verbose: console.log });
+const uri = './data/litesync-node1.db?node=primary&bind=tcp://0.0.0.0:8001';
+const options = { verbose: console.log };
+const db = new Database(uri, options);
+
+// 监听数据更新 / listening data update
+db.on('sync', function(changes) {
+  console.log('Received data update: ', changes);
+});
+
+db.on('ready', function() {
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      age INTEGER NOT NULL
+    );
+  `);
+});
 
 // Middleware：解析 JSON 请求体
 app.use(express.json());
