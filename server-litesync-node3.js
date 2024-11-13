@@ -17,7 +17,7 @@ db.on('sync', function(changes) {
 db.on('ready', function() {
   db.exec(`
     CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id INTEGER PRIMARY KEY,
       name TEXT NOT NULL,
       age INTEGER NOT NULL
     );
