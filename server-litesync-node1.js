@@ -5,7 +5,7 @@ const app = express();
 const port = 8001;
 
 // 创建 SQLite 数据库连接 / create SQLite db connection
-const uri = 'file:./data/litesync-node1.db?node=primary&bind=tcp://0.0.0.0:8001';
+const uri = 'file:./data/litesync-node1.db?node=primary&bind=tcp://0.0.0.0:8000';
 const options = { verbose: console.log };
 const db = new Database(uri, options);
 
