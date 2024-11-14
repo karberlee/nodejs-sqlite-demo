@@ -1,11 +1,12 @@
 const express = require('express');
-const Database = require('better-sqlite3');
 const cors = require('cors');
 const app = express();
 const port = 8000;
 
 // 创建 SQLite 数据库连接 / create SQLite db connection
-const db = new Database('./data/mydb.db', { verbose: console.log });
+const uri = './data/my2db.db';
+const options = { verbose: console.log };
+const db = require('better-sqlite3')(uri, options);
 
 // Middleware：解析 JSON 请求体
 app.use(express.json());

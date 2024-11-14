@@ -1,5 +1,4 @@
 const express = require('express');
-const Database = require('better-sqlite3-litesync');
 const cors = require('cors');
 const app = express();
 const port = 8003;
@@ -7,7 +6,7 @@ const port = 8003;
 // 创建 SQLite 数据库连接 / create SQLite db connection
 const uri = 'file:./data/litesync-node3.db?node=secondary&connect=tcp://127.0.0.1:8000';
 const options = { verbose: console.log };
-const db = new Database(uri, options);
+const db = require('better-sqlite3-litesync')(uri, options);
 
 // 监听数据更新 / listening data update
 db.on('sync', function(changes) {
